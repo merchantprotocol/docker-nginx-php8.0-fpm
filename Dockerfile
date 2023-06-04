@@ -84,12 +84,6 @@ RUN apt-get update \
    && apt-get install pip -y \
    && pip install ngxtop nano
 
-RUN echo 'deb http://apt.newrelic.com/debian/ newrelic non-free' >> /etc/apt/sources.list.d/newrelic.list \
-    && wget -O- https://download.newrelic.com/548C16BF.gpg | apt-key add - \
-    && apt-get update \
-    && apt-get -y install newrelic-php5 \
-    && NR_INSTALL_SILENT=1 newrelic-install install
-
 RUN setcap "cap_net_bind_service=+ep" /usr/bin/php8.0
 RUN mkdir /opt/scripts/
 
